@@ -16,6 +16,8 @@ zones:
   hydrobasins: data/raw/hydrobasins/hybas_af_lev10_v1c.shp   # Africa, level 10 (check level 12 later)
   kenya_boundary: ../kenya-flood-eventset/data/raw/geobounds_KEN.geojson
   max_site_distance_km: 150                         # start; beyond this a unit uses the fallback rule
+  up_area_ratio_bounds: [0.5, 2]                    # site upstream area / unit UP_AREA; outside this, 01 snaps the site to a nearby unit
+  site_snap_km: 5                                   # search radius for snapping a site to a unit (about one GloFAS cell)
   fallback: nearest_in_region                       # nearest_in_region | independent (03 also runs the other as a bracket)
 
 hazard:
@@ -25,6 +27,7 @@ hazard:
   depth_to_m: 0.01
   depth_threshold_m: 0                              # a cell counts as flooded above this depth
   below_lowest_rp: zero                             # exposure below the lowest mapped RP is zero (biases AAL low; report it)
+  deep_water_check_m: 10                            # 02 prints exposure in cells deeper than this (lakes in the maps)
 
 exposure:
   kind: population
@@ -54,6 +57,7 @@ event_maps:
 files:
   zones: results/zones.parquet
   zones_map: figures/zones.png
+  site_placement: results/site_placement.csv
   zone_exposure: results/zone_exposure_rp.parquet
   zone_aal_maps: results/zone_aal_from_maps.parquet
   event_losses: results/event_losses.parquet
