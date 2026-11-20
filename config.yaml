@@ -27,7 +27,8 @@ hazard:
   depth_to_m: 0.01
   depth_threshold_m: 0                              # a cell counts as flooded above this depth
   below_lowest_rp: zero                             # exposure below the lowest mapped RP is zero (biases AAL low; report it)
-  deep_water_check_m: 10                            # 02 prints exposure in cells deeper than this (lakes in the maps)
+  permanent_water_depth_m: 10                       # cells this deep at the lowest RP are lakes (e.g. Turkana); 02 excludes them at every RP
+  summary_rp: 100                                   # 02 prints exposed at this RP by zone rule and region
 
 exposure:
   kind: population
