@@ -1,0 +1,12 @@
+name: kenya-flood-losses
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - numpy
+  - pandas
+  - pyarrow
+  - rasterio
+  - geopandas
+  - matplotlib
+  - pyyaml
